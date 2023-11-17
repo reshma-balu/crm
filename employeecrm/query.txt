@@ -1,0 +1,47 @@
+from django.db import models
+
+# Create your models here.
+class Employees(models.Model):
+    name=models.CharField(max_length=200)
+    department=models.CharField(max_length=200)
+    salary=models.PositiveIntegerField()
+    email=models.EmailField(unique=True)
+    age=models.PositiveIntegerField()
+    contact=models.CharField(max_length=10)
+
+orm query for creating a new object/resource
+
+>from app name.models import model name
+>python manage.py shell
+>Employees.objects.create(name="reshma",department="hr",salary=56000,email="reshma@gmail.com",age=30,contact="test")
+
+orm query for fetching all record
+
+>Employees.objects.all()
+
+orm query for fetching a specific Employee details
+
+>qs=Employees.objects.get(id=1)
+
+orm query for filtering employee records
+
+>Employees.objects.filter(department="hr")
+_gte    >=
+_lte    <=
+_gt     >
+_lt     <
+
+exclude an object
+
+>qs=Employees.objects.exclude(department="hr")
+
+
+>> Employees.objects.filter(id=2).update(contact="new contact",age=32)
+
+>> Employees.objects.filter(id=3).delete()
+
+>>Employees.objects.all().order_by("salary")
+
+>>> qs=Employees.objects.all().order_by("salary")
+
+>enployee create,employee list,employee detail,employee edit,employee delete
